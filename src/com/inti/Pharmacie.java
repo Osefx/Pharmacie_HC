@@ -159,10 +159,9 @@ public class Pharmacie {
 	    } while (!medic_existant);
 	    return medic;
 	  }
-}
+
 	  
-/*
- * 	  /////////// LECTURE Paiement
+/////////// LECTURE Paiement
 	  
 	  static double lirePaiement() {
 	      double paiement;
@@ -187,8 +186,8 @@ public class Pharmacie {
 	  static void quitter() {
 	    System.out.println("Fin de l'application!");
 	  }
-	}
- */
+}
+
 	  
 
 	 
