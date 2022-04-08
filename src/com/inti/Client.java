@@ -1,6 +1,10 @@
 package com.inti;
 
+import java.util.Scanner;
+
 public class Client extends Pharmacie{
+	
+	private static Scanner sca = new Scanner(System.in);
 
 /// ATTRIBUTS
 	
@@ -17,21 +21,25 @@ public class Client extends Pharmacie{
 
 /// Augement/descendre le crédit
 
-		  public void augmenterCredit(double montant) {
+		  public void augmenterCredit(double montant) 
+		  {
 		    credit = credit + montant;
 		  }
 
-		  public void diminuerCredit(double montant) {
+		  public void diminuerCredit(double montant) 
+		  {
 		    credit = credit - montant;
 		  }
 		  
 /// Getter and setter
 
-		  public double getCredit() {
+		  public double getCredit() 
+		  {
 		    return credit;
 		  }
 
-		  public String getNom() {
+		  public String getNom() 
+		  {
 		    return nom;
 		  }
 

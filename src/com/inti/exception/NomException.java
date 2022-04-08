@@ -1,6 +1,6 @@
 package com.inti.exception;
 
-public class NomException 
+public class NomException extends Exception
 {		
 	public NomException()
 	{

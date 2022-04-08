@@ -1,5 +1,7 @@
 package com.inti;
 
+import com.inti.exception.NomException;
+
 public class Medicament extends Pharmacie{
 
 	
@@ -7,7 +9,7 @@ public class Medicament extends Pharmacie{
 	
 	  private String nom;
 	  private double prix;
-	  private int stock;
+	  public int stock;
 	 
 
 	  
@@ -19,6 +21,29 @@ public Medicament(String nom, double prix, int stock)
 	    this.prix = prix;
 	    this.stock = stock;
 		}
+
+
+
+/// fonctions
+public static void achat(Client[] clients, Medicament[] medicaments) 
+	{
+			Client client = lireClient(clients);
+			Medicament medicament = lireMedicament(medicaments);
+			
+			double paiement = lirePaiement();
+			int quantite = lireQuantite();
+			
+			if (quantite <= medicament.getStock()) 
+			{
+			  medicament.diminuerStock(quantite);
+			  client.augmenterCredit((medicament.getPrix() * quantite) - paiement);
+			} 
+			else
+			{
+				System.out.println("Quantité insuffisante, stock restant" + lireQuantite());
+			}
+
+}
 
 
 

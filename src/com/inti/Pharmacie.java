@@ -8,7 +8,8 @@ public class Pharmacie {
 
 	private static Scanner sca = new Scanner(System.in);
 	 
-	  public static void main(String args[]) {
+	  public static void main(String args[]) 
+	  {
 	    Client[] clients = new Client[2];
 	    Medicament[] medicaments = new Medicament[2];
 	 
@@ -27,10 +28,15 @@ public class Pharmacie {
 	 
 	      switch (choix) {
 	      case 1:
-	    achat(clients, medicaments);
+	    Medicament.achat(clients, medicaments);
 	    break;
 	      case 2:
-	    approvisionnement(medicaments);
+			try {
+				approvisionnement(medicaments);
+			} catch (NomException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    break;
 	      case 3:
 	    affichage(clients, medicaments);
@@ -47,7 +53,8 @@ public class Pharmacie {
 	  
 /////////// LE MENU
 	 
-	  static int menu() {
+	  	static int menu() 
+	  	{
 	    int choix = 0;
 	    System.out.println("");
 	    System.out.println("*********** MENU ***********");
@@ -66,49 +73,41 @@ public class Pharmacie {
 	 
 	  
 /////////// ACHAT MEDICAMENTS
-	  	static void achat(Client[] clients, Medicament[] medicaments) {
-	    Client client = lireClient(clients);
-	    Medicament medicament = lireMedicament(medicaments);
-	 
-	    double paiement = lirePaiement();
-	    int quantite = lireQuantite();
-	 
-	    if (quantite <= medicament.getStock()) 
-	    {
-	      medicament.diminuerStock(quantite);
-	      client.augmenterCredit((medicament.getPrix() * quantite) - paiement);
-	    } 
-	    else
-	    {
-	    	System.out.println("Quantité insuffisante, stock restant" + lireQuantite());
-	    }
-	    
-	  }
+	  	// transferer vers medicament
+	  	
+	  	
 	 
 
 	  
 /////////// APPRO MEDIC	  
-	  static void approvisionnement(Medicament[] medicaments) {
-		  
+	  public static void approvisionnement(Medicament[] medicaments) throws NomException 
+	  { 
 	    Medicament medicament = lireMedicament(medicaments);
 	    
 	    System.out.println("Quelle Quantité : ");
-	    
 	    int quantite = sca.nextInt();
 	    
+		if(quantite < 0)
+		{
+			throw new  NomException();
+		}
+		else
+		{
+			quantite = quantite;
+		}
 	    sca.nextLine();
 	    medicament.augmenterStock(quantite);
 	  }
 	 
 /////////// AFFICHER les données stockées dans les tableaux clients et medicaments
 	  
-	  static void affichage(Client[] clients, Medicament[] medicaments) {
-	 
-	    System.out.println("Affichage des stocks");
+	  static void affichage(Client[] clients, Medicament[] medicaments) 
+	  {
+		  System.out.println("Affichage des stocks");
 	    for (int i = 0; i < medicaments.length; i++) {
 	    	System.out.println("");
 	    	System.out.println("Stock du médicament " + medicaments[i].getNom() + " :" + medicaments[i].getStock());
-	    }
+	    	}
 	    System.out.println("");
 	    System.out.println("Affichage du crédit");
 	    for (int i = 0; i < clients.length; i++) {
@@ -119,7 +118,8 @@ public class Pharmacie {
 	 
 /////////// LECTURE CLIENT DANS TABLEAU
 	  
-	  static Client lireClient(Client[] clients) {
+	  static Client lireClient(Client[] clients) 
+	  {
 	    String nom;
 	    boolean client_existant = false;
 	    Client c = null;
@@ -141,7 +141,8 @@ public class Pharmacie {
 	  }
 	 
 /////////// LECTURE MEDIC DANS TABLEAU
-	  static Medicament lireMedicament(Medicament[] medicaments) {
+	  static Medicament lireMedicament(Medicament[] medicaments) 
+	  {
 	    String nom;
 	    boolean medic_existant = false;
 	    Medicament medic = null;
@@ -164,7 +165,8 @@ public class Pharmacie {
 	  
 /////////// LECTURE Paiement
 	  
-	  static double lirePaiement() {
+	  static double lirePaiement() 
+	  {
 	      double paiement;
 	      System.out.println("Montant du paiement?");
 	      paiement = sca.nextDouble();
@@ -174,7 +176,8 @@ public class Pharmacie {
 	  
 /////////// LECTURE quantité
 	  
-	  static int lireQuantite() {
+	  static int lireQuantite() 
+	  {
 	      int quantite;
 	      System.out.println("quelle est la quantité achetée?");
 	      quantite = sca.nextInt();
@@ -184,7 +187,8 @@ public class Pharmacie {
 	  }
 	  
 /////////// QUITTER	 
-	  static void quitter() {
+	  static void quitter() 
+	  {
 	    System.out.println("Fin de l'application!");
 	  }
 }
