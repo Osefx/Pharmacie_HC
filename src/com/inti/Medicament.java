@@ -48,5 +48,16 @@ public Medicament(String nom, double prix, int stock)
 	  {
 	    return nom;
 	  }
+	  
+	  /**
+	   * • Créer une Exception : nbMedicamentNegException(), qui permet au programme de 
+	   * continuer même si l'utilisateur approvisionne un médicament avec un nombre négatif. 
+	   * 
+	   * 
+	   * • Créer une Exception : notEnoughStockException() , qui permet au programme de 
+	   * continuer même si un client souhaite acheter plus de boîtes de médicament qu'il y en a 
+	   * en stock. Le programme doit afficher combien il reste de boîtes du médicament 
+	   * demandé, puis demander à l'utilisateur s'il veut les boîtes en stock
+	   */
 
 }

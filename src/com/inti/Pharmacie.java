@@ -1,11 +1,12 @@
 package com.inti;
+import com.inti.exception.NomException;
 
 import java.util.Scanner;
 
 public class Pharmacie {
 
 
-	private static Scanner scanner = new Scanner(System.in);
+	private static Scanner sca = new Scanner(System.in);
 	 
 	  public static void main(String args[]) {
 	    Client[] clients = new Client[2];
@@ -53,13 +54,13 @@ public class Pharmacie {
 	    System.out.println("");
 	    System.out.println("1 : Achat de médicament");
 	    System.out.println("2 : Approvisionnement en  médicaments");
-	    System.out.println("3 : Stocks et des Crédits");
+	    System.out.println("3 : Affichage Stocks et Crédits");
 	    System.out.println("");
 	    System.out.println("4 : Quitter");
 	    while ((choix != 1) && (choix != 2) && (choix != 3) && (choix != 4)) {
-	      choix = scanner.nextInt();
+	      choix = sca.nextInt();
 	    }
-	    scanner.nextLine();
+	    sca.nextLine();
 	    return choix;
 	  }
 	 
@@ -93,9 +94,9 @@ public class Pharmacie {
 	    
 	    System.out.println("Quelle Quantité : ");
 	    
-	    int quantite = scanner.nextInt();
+	    int quantite = sca.nextInt();
 	    
-	    scanner.nextLine();
+	    sca.nextLine();
 	    medicament.augmenterStock(quantite);
 	  }
 	 
@@ -125,7 +126,7 @@ public class Pharmacie {
 	    System.out.println("Nom du client? : ");
 	 
 	    do {
-	      nom = scanner.nextLine();
+	      nom = sca.nextLine();
 	      for (int i = 0; (!client_existant && i < clients.length); i++) {
 	    if ((clients[i].getNom()).equals(nom)) {
 	    	client_existant = true;
@@ -146,7 +147,7 @@ public class Pharmacie {
 	    Medicament medic = null;
 	    System.out.println("Nom du medicament? : ");
 	    do {
-	      nom = scanner.nextLine();
+	      nom = sca.nextLine();
 	      for (int i = 0; (!medic_existant && i < medicaments.length); i++) {
 	    if ((medicaments[i].getNom()).equals(nom)) {
 	    	medic_existant = true;
@@ -166,8 +167,8 @@ public class Pharmacie {
 	  static double lirePaiement() {
 	      double paiement;
 	      System.out.println("Montant du paiement?");
-	      paiement = scanner.nextDouble();
-	      scanner.nextLine();
+	      paiement = sca.nextDouble();
+	      sca.nextLine();
 	      return paiement;
 	  }
 	  
@@ -176,8 +177,8 @@ public class Pharmacie {
 	  static int lireQuantite() {
 	      int quantite;
 	      System.out.println("quelle est la quantité achetée?");
-	      quantite = scanner.nextInt();
-	      scanner.nextLine();
+	      quantite = sca.nextInt();
+	      sca.nextLine();
 	      return quantite;
 	 
 	  }

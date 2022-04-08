@@ -24,6 +24,8 @@ public class Client extends Pharmacie{
 		  public void diminuerCredit(double montant) {
 		    credit = credit - montant;
 		  }
+		  
+/// Getter and setter
 
 		  public double getCredit() {
 		    return credit;
